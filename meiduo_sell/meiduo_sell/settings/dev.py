@@ -28,7 +28,7 @@ SECRET_KEY = '9y&gs=2@!h7^2crwk@^6whxt&s7h)36lyyj(@+pvzt_6*289+1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.meiduo.site', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -89,7 +89,7 @@ DATABASES = {
         'PORT': 3306,  # 数据库端口
         'USER': 'meiduosell',  # 数据库用户名
         'PASSWORD': '0508',  # 数据库用户密码
-        'NAME': 'meiduo_mell'  # 数据库名字
+        'NAME': 'meiduo_sell'  # 数据库名字
     }
 }
 
@@ -150,6 +150,9 @@ CACHES = {
         }
     }
 }
+
+# from django_redis import  get_redis_connection
+
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
 
@@ -200,3 +203,13 @@ LOGGING = {
 # logger = logging.getLogger('django')
 # logger.error('Error Message')
 # logger.debug('Debuge Message')
+
+# DRF框架设置
+REST_FRAMEWORK = {
+    # 异常处理
+    'EXCEPTION_HANDLER': 'meiduo_mall.utils.exceptions.exception_handler',
+}
+
+# 设置django框架认证系统所使用的模型类
+# AUTH_USER_MODEL = '子应用.模型类'
+AUTH_USER_MODEL = 'users.User'
